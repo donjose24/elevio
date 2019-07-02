@@ -12,4 +12,8 @@ defmodule Elevio.Api do
     |> Enum.concat(%{"x-api-key": key})
   end
 
+  def process_response_body(body) do
+    Poison.Parser.parse!(body).body
+  end
+
 end
