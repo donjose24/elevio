@@ -17,6 +17,7 @@ defmodule ElevioWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/articles/:id", PageController, :show
   end
 
   # Other scopes may use custom stacks.

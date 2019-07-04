@@ -1,0 +1,11 @@
+<section class="phx-hero">
+  <h1>View Article Details</h1>
+</section>
+
+  <h1> Title: <%= @article["title"] %> </h1>
+
+  <%= raw(List.first(@article["translations"])["body"]) %>
+  <i> <%= @article["created_at"] %> </i>
+  <br>
+
+  <a href="/" class="button">Back </a>

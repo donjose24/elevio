@@ -1,35 +1,36 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
+  <h1>My Elevio Articles</h1>
+  <p>Written by: JM Ramos</p>
 </section>
 
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-    </ul>
-  </article>
-</section>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Access</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for article <- @articles do %>
+      <tr>
+        <td><%= article["id"] %></td>
+        <td><%= article["access"] %></td>
+        <td><%= article["title"] %></td>
+        <td><%= article["status"] %></td>
+        <td><a href='/articles/<%= article["id"] %>'>View</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= if @page_number <= @total_pages do %>
+  <%= if @page_number != 1 do %>
+    <a class="button" href='?page_number=<%= @page_number-1 %>'>Previous</a>
+  <% end %>
+  <%= if @page_number != @total_pages do %>
+    <a class="button" href='?page_number=<%= @page_number+1 %>'>Next</a>
+  <% end %>
+<% end %>
+<h5><%= @page_number %> of <%= @total_pages %> page(s)</h5>
