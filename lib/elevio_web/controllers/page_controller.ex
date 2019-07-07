@@ -11,4 +11,10 @@ defmodule ElevioWeb.PageController do
     article = Elevio.Api.show_article(id)
     render(conn, "show.html", %{article: article})
   end
+
+  def search(conn, _params) do
+    query_params = conn.query_params
+    body = Elevio.Api.search_articles query_params
+    render(conn, "search.html", %{results: body["results"], total_pages: body["totalPages"], page_number: body["currentPage"], query: body["queryTerm"]})
+  end
 end

@@ -1,24 +1,18 @@
 <section class="phx-hero">
-  <h1>My Elevio Articles</h1>
+  <h1>Search Results:</h1>
 </section>
 
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Access</th>
       <th>Title</th>
-      <th>Status</th>
-      <th>View</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <%= for article <- @articles do %>
+    <%= for article <- @results do %>
       <tr>
-        <td><%= article["id"] %></td>
-        <td><%= article["access"] %></td>
         <td><%= article["title"] %></td>
-        <td><%= article["status"] %></td>
         <td><a href='/articles/<%= article["id"] %>'>View</a></td>
       </tr>
     <% end %>
@@ -26,10 +20,10 @@
 </table>
 <%= if @page_number <= @total_pages do %>
   <%= if @page_number != 1 do %>
-    <a class="button" href='?page_number=<%= @page_number-1 %>'>Previous</a>
+    <a class="button" href='?page_number=<%= @page_number-1%>&query=<%= @query%>'>Previous</a>
   <% end %>
   <%= if @page_number != @total_pages do %>
-    <a class="button" href='?page_number=<%= @page_number+1 %>'>Next</a>
+    <a class="button" href='?page_number=<%= @page_number+1 %>&query=<%= @query%>'>Next</a>
   <% end %>
 <% end %>
 <h5><%= @page_number %> of <%= @total_pages %> page(s)</h5>

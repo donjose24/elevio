@@ -18,6 +18,7 @@ defmodule ElevioWeb.Router do
 
     get "/", PageController, :index
     get "/articles/:id", PageController, :show
+    get "/search", PageController, :search
   end
 
   # Other scopes may use custom stacks.
