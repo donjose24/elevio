@@ -12,7 +12,7 @@
       <section class="container">
         <nav role="navigation">
           <form action="/search" method="GET">
-            <input type="text" name="query" placeholder="Article Name">
+            <input type="text" name="query" placeholder="Search Articles">
             <button>Search</button>
           </form>
         </nav>
